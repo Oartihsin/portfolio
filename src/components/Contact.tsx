@@ -13,7 +13,7 @@ const contacts = [
   {
     icon: Linkedin,
     label: 'LinkedIn',
-    value: '/in/nishitprao',
+    value: 'nishitprao',
     href: 'https://www.linkedin.com/in/nishitprao/',
   },
   {

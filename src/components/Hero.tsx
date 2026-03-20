@@ -58,7 +58,7 @@ export default function Hero() {
             <ArrowDown size={16} />
           </a>
           <a
-            href="/Nishit_resume_2026.pdf"
+            href="/portfolio/Nishit_resume_2026.pdf"
             download
             className="inline-flex items-center gap-2 px-8 py-3.5 bg-white border border-border text-gray-900 rounded-full font-medium hover:bg-gray-50 transition-colors"
           >

@@ -25,6 +25,9 @@ function parseContact(lines) {
     else if (p.includes('github')) github = 'https://' + p.replace(/^https?:\/\//, '');
   }
 
+  // Fix known typo in resume PDF
+  github = github.replace('Oartishin', 'Oartihsin');
+
   return { name, phone, email, linkedin, github };
 }
 
@@ -180,7 +183,7 @@ function extractCaseStudies(experiences) {
       const countMatch = bullet.match(/(\d[\d,]*\+?)\s+(tickets|servers|clusters|accounts|Kafka)/i);
       if (countMatch) metrics.push({ value: countMatch[1], label: countMatch[2] });
 
-      if (bullet.match(/zero\s+downtime/i)) metrics.push({ value: '0', label: 'Downtime' });
+      if (bullet.match(/zero\s+downtime/i)) metrics.push({ value: 'Zero', label: 'Downtime' });
 
       const mttrMatch = bullet.match(/MTTR\s+(?:from\s+)?(\d+\s*\w+)\s+to\s+(\w+)/i);
       if (mttrMatch) metrics.push({ value: mttrMatch[2], label: 'MTTR' });
@@ -231,7 +234,9 @@ function extractImpactStats(experiences) {
     // Pattern: "N+ servers/clusters/tickets"
     const scaleMatch = bullet.match(/(\d[\d,]*\+?)\s+(servers|clusters|tickets|on-prem|accounts)/i);
     if (scaleMatch) {
-      stats.push({ value: scaleMatch[1], label: `${scaleMatch[2].charAt(0).toUpperCase() + scaleMatch[2].slice(1)} Managed` });
+      const noun = scaleMatch[2].toLowerCase();
+      const label = noun === 'on-prem' ? 'On-prem Servers Managed' : `${noun.charAt(0).toUpperCase() + noun.slice(1)} Managed`;
+      stats.push({ value: scaleMatch[1], label });
       continue;
     }
 

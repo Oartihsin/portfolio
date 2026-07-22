@@ -4,7 +4,7 @@
     "phone": "+91 8238075373",
     "email": "nishitrao1011@gmail.com",
     "linkedin": "https://linkedin.com/in/nishitprao",
-    "github": "https://github.com/Oartishin"
+    "github": "https://github.com/Oartihsin"
   },
   "education": [
     {
@@ -190,7 +190,7 @@
     },
     {
       "value": "7000+",
-      "label": "On-prem Managed"
+      "label": "On-prem Servers Managed"
     }
   ],
   "caseStudies": [
@@ -213,7 +213,7 @@
       "description": "Migrated manual Confluent Kafka provisioning model to automated IAAC based provisioning model with zero downtime using Terraform",
       "metrics": [
         {
-          "value": "0",
+          "value": "Zero",
           "label": "Downtime"
         }
       ]
@@ -229,7 +229,7 @@
           "label": "Kafka"
         },
         {
-          "value": "0",
+          "value": "Zero",
           "label": "Downtime"
         },
         {

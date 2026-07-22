@@ -38,18 +38,18 @@ export default function CaseStudies() {
         {resumeData.caseStudies.map((study, i) => (
           <div
             key={study.title + i}
-            className="mx-4 w-[350px] md:w-[400px] bg-white rounded-2xl border border-border overflow-hidden hover:shadow-lg transition-shadow shrink-0"
+            className="mx-4 w-[380px] md:w-[440px] bg-white rounded-2xl border border-border overflow-hidden hover:shadow-lg transition-shadow shrink-0"
           >
             {/* Gradient top bar */}
             <div className={`h-1.5 bg-gradient-to-r ${study.color}`} />
 
             <div className="p-6">
-              <h3 className="font-heading text-lg font-bold text-gray-900 mb-1 truncate">
+              <h3 className="font-heading text-lg font-bold text-gray-900 mb-1">
                 {study.title}
               </h3>
               <p className="text-xs font-medium text-accent mb-3">{study.company}</p>
 
-              <p className="text-muted text-sm leading-relaxed mb-5 line-clamp-3">
+              <p className="text-muted text-sm leading-relaxed mb-5">
                 {study.description}
               </p>
 

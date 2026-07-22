@@ -177,12 +177,8 @@
       "label": "Zero-Downtime Migrations"
     },
     {
-      "value": "50ms",
-      "label": "Latency Improved"
-    },
-    {
-      "value": "3x",
-      "label": "Peak Traffic Handled"
+      "value": "50K+",
+      "label": "RPM Peak Traffic Handled"
     },
     {
       "value": "80%",
@@ -191,6 +187,10 @@
     {
       "value": "99.99%",
       "label": "Availability SLA"
+    },
+    {
+      "value": "7000+",
+      "label": "On-prem Managed"
     }
   ],
   "caseStudies": [

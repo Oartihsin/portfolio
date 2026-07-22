@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Marquee from 'react-fast-marquee'
 import { MapPin, ArrowDown, Download } from 'lucide-react'
 import resumeData from '@/data/resume.json'
 
@@ -64,22 +65,24 @@ export default function Hero() {
         </div>
       </motion.div>
 
-      {/* Stats bar */}
+      {/* Stats marquee */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="w-full max-w-4xl mx-auto"
+        className="w-full max-w-5xl mx-auto"
       >
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 bg-white rounded-2xl border border-border p-8">
-          {stats.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <div className="font-heading text-3xl font-bold text-accent">
-                {stat.value}
+        <div className="bg-white rounded-2xl border border-border py-6 overflow-hidden">
+          <Marquee speed={50} gradient={false} autoFill={true}>
+            {stats.map((stat) => (
+              <div key={stat.label} className="text-center mx-10">
+                <div className="font-heading text-3xl font-bold text-accent">
+                  {stat.value}
+                </div>
+                <div className="text-sm text-muted mt-1">{stat.label}</div>
               </div>
-              <div className="text-sm text-muted mt-1">{stat.label}</div>
-            </div>
-          ))}
+            ))}
+          </Marquee>
         </div>
       </motion.div>
     </section>

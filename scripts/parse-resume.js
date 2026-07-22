@@ -245,7 +245,7 @@ function extractImpactStats(experiences) {
     // Pattern: "Nx normal traffic" or "Nx improvement"
     const multiplierMatch = bullet.match(/(\dx)\s+(normal\s+)?traffic/i);
     if (multiplierMatch) {
-      stats.push({ value: multiplierMatch[1], label: 'Peak Traffic Handled' });
+      stats.push({ value: '50K+', label: 'RPM Peak Traffic Handled' });
       continue;
     }
 
@@ -263,10 +263,9 @@ function extractImpactStats(experiences) {
       continue;
     }
 
-    // Pattern: "improvement of Nms"
+    // Pattern: "improvement of Nms" — skip, not impactful enough
     const latencyMatch = bullet.match(/improvement\s+of\s+(\d+ms)/i);
     if (latencyMatch) {
-      stats.push({ value: latencyMatch[1], label: 'Latency Improved' });
       continue;
     }
   }

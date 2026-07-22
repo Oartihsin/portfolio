@@ -2,25 +2,26 @@
 
 import { motion } from 'framer-motion'
 import { Mail, Linkedin, Github } from 'lucide-react'
+import resumeData from '@/data/resume.json'
 
-const contacts = [
+const contactItems = [
   {
     icon: Mail,
     label: 'Email',
-    value: 'nishitrao1011@gmail.com',
-    href: 'mailto:nishitrao1011@gmail.com',
+    value: resumeData.contact.email,
+    href: `mailto:${resumeData.contact.email}`,
   },
   {
     icon: Linkedin,
     label: 'LinkedIn',
-    value: 'nishitprao',
-    href: 'https://www.linkedin.com/in/nishitprao/',
+    value: resumeData.contact.linkedin.replace('https://linkedin.com/in/', ''),
+    href: resumeData.contact.linkedin,
   },
   {
     icon: Github,
     label: 'GitHub',
-    value: '@Oartihsin',
-    href: 'https://github.com/Oartihsin',
+    value: `@${resumeData.contact.github.replace('https://github.com/', '')}`,
+    href: resumeData.contact.github,
   },
 ]
 
@@ -47,7 +48,7 @@ export default function Contact() {
           </p>
 
           <a
-            href="mailto:nishitrao1011@gmail.com"
+            href={`mailto:${resumeData.contact.email}`}
             className="inline-flex items-center gap-2 px-8 py-3.5 bg-accent text-white rounded-full font-medium hover:bg-accent-dark transition-colors mb-12"
           >
             Start a Conversation
@@ -63,7 +64,7 @@ export default function Contact() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="grid sm:grid-cols-3 gap-4"
         >
-          {contacts.map((contact) => (
+          {contactItems.map((contact) => (
             <a
               key={contact.label}
               href={contact.href}
@@ -84,7 +85,7 @@ export default function Contact() {
         {/* Footer */}
         <div className="mt-20 pt-8 border-t border-border">
           <p className="text-sm text-muted">
-            &copy; 2026 Nishit Rao. Building infra that doesn&apos;t page you at 3am.
+            &copy; {new Date().getFullYear()} {resumeData.contact.name}. Building infra that doesn&apos;t page you at 3am.
           </p>
         </div>
       </div>

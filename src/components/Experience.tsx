@@ -1,51 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-
-const experiences = [
-  {
-    company: 'Swiggy',
-    role: 'DevOps Engineer III',
-    period: 'Jan 2025 — Present',
-    location: 'Bengaluru',
-    bullets: [
-      'Built AI-based CMR Enforcement tool using LLMs, AWS Lambda, and Python to automate change management',
-      'Migrated manual Confluent Kafka provisioning to automated IaaC model with zero downtime',
-      'Optimized cross-region traffic with Global Accelerators, reducing latency significantly',
-    ],
-  },
-  {
-    company: 'Direct I — Zeta Team',
-    role: 'Sr. Site Reliability Engineer',
-    period: 'Jun 2023 — Dec 2024',
-    location: 'Bengaluru',
-    bullets: [
-      'Led enterprise-level automation for microservices saving cost of 1 FTE/month using Python, Jenkins, Helm',
-      'Designed alerting schema reducing unwanted alerts by 80% using Prometheus, Grafana, and EKS',
-      'Authored in-depth RCAs within SLA/SLO targets during IPL 2024 campaign ensuring production stability',
-    ],
-  },
-  {
-    company: 'Direct I — Titan Email Team',
-    role: 'DevOps Engineer II',
-    period: 'Sep 2022 — May 2023',
-    location: 'Bengaluru',
-    bullets: [
-      'Deployed OpenDKIM as a Go service, eliminating excessive RAM consumption from legacy implementation',
-      'Automated password rotation for improved security; built serverless mail delivery insights with AWS Lambda',
-    ],
-  },
-  {
-    company: 'Newfold Digital',
-    role: 'Operations Engineer',
-    period: 'Jun 2021 — Aug 2022',
-    location: 'Bengaluru',
-    bullets: [
-      'Migrated 7,000+ on-prem servers to SaaS for email delivery and security',
-      'Built an OpenShift operator for a highly available private RPM mirror using Golang',
-    ],
-  },
-]
+import resumeData from '@/data/resume.json'
 
 export default function Experience() {
   return (
@@ -72,7 +28,7 @@ export default function Experience() {
           <div className="absolute left-0 md:left-8 top-0 bottom-0 w-px bg-border" />
 
           <div className="space-y-12">
-            {experiences.map((exp, i) => (
+            {resumeData.experiences.map((exp, i) => (
               <motion.div
                 key={exp.company + exp.role}
                 initial={{ opacity: 0, x: -20 }}

@@ -1,29 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-
-const skillGroups = [
-  {
-    category: 'Cloud & Infrastructure',
-    skills: ['AWS', 'EKS', 'Terraform', 'Helm', 'Istio', 'Docker'],
-  },
-  {
-    category: 'CI/CD & Automation',
-    skills: ['Jenkins', 'ArgoCD', 'GitHub Actions', 'Python', 'Bash'],
-  },
-  {
-    category: 'Observability',
-    skills: ['Prometheus', 'Grafana', 'ELK Stack', 'Datadog'],
-  },
-  {
-    category: 'Languages',
-    skills: ['Python', 'Golang', 'Bash', 'SQL'],
-  },
-  {
-    category: 'Data & Messaging',
-    skills: ['Kafka (Confluent)', 'PostgreSQL', 'Redis'],
-  },
-]
+import resumeData from '@/data/resume.json'
 
 export default function Skills() {
   return (
@@ -45,7 +23,7 @@ export default function Skills() {
         </motion.div>
 
         <div className="space-y-8">
-          {skillGroups.map((group, i) => (
+          {resumeData.skillGroups.map((group, i) => (
             <motion.div
               key={group.category}
               initial={{ opacity: 0, y: 15 }}

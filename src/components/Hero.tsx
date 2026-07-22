@@ -2,10 +2,11 @@
 
 import { motion } from 'framer-motion'
 import { MapPin, ArrowDown, Download } from 'lucide-react'
+import resumeData from '@/data/resume.json'
 
 const stats = [
-  { value: '5+', label: 'Years Experience' },
-  { value: '3', label: 'Companies Scaled' },
+  { value: `${resumeData.meta.yearsExperience}+`, label: 'Years Experience' },
+  { value: `${resumeData.meta.companiesCount}`, label: 'Companies Scaled' },
   { value: '80%', label: 'Alert Reduction' },
   { value: '0', label: 'Downtime Migrations' },
 ]
@@ -27,12 +28,12 @@ export default function Hero() {
 
         {/* Name */}
         <h2 className="font-heading text-lg tracking-widest text-muted uppercase mb-2">
-          Nishit Rao
+          {resumeData.contact.name}
         </h2>
 
         {/* Role badges */}
         <p className="text-sm tracking-wider text-muted/70 uppercase mb-8">
-          DevOps Engineer · SRE · Platform Engineering
+          {resumeData.meta.currentRole} · {resumeData.meta.currentCompany}
         </p>
 
         {/* Headline */}
@@ -44,7 +45,7 @@ export default function Hero() {
 
         {/* Subtitle */}
         <p className="text-lg md:text-xl text-muted max-w-2xl mx-auto mb-10 leading-relaxed">
-          DevOps Engineer III at Swiggy. Building resilient, automated infrastructure
+          {resumeData.meta.currentRole} at {resumeData.meta.currentCompany}. Building resilient, automated infrastructure
           across Kubernetes, AWS, and Confluent Kafka — so your team ships fast and sleeps well.
         </p>
 
@@ -58,7 +59,7 @@ export default function Hero() {
             <ArrowDown size={16} />
           </a>
           <a
-            href="/portfolio/Nishit_resume_2026.pdf"
+            href={`/portfolio/${resumeData.pdfFilename}`}
             download
             className="inline-flex items-center gap-2 px-8 py-3.5 bg-white border border-border text-gray-900 rounded-full font-medium hover:bg-gray-50 transition-colors"
           >

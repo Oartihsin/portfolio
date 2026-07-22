@@ -1,0 +1,177 @@
+{
+  "contact": {
+    "name": "Nishit Rao",
+    "phone": "+91 8238075373",
+    "email": "nishitrao1011@gmail.com",
+    "linkedin": "https://linkedin.com/in/nishitprao",
+    "github": "https://github.com/Oartishin"
+  },
+  "education": [
+    {
+      "institution": "Vellore Institute of Technology",
+      "location": "Chennai, IN",
+      "degree": "Bachelor of Technology in Computer Science",
+      "period": "Jun. 2017 – May 2021"
+    }
+  ],
+  "experiences": [
+    {
+      "company": "Swiggy",
+      "role": "Devops Engineer III",
+      "period": "Jan 2025 – Present",
+      "location": "Bengaluru, IN",
+      "bullets": [
+        "Built an AI-powered K8s debugging MCP server enabling self-serve ephemeral environment troubleshooting via Claude Code, eliminating  100 DevOps tickets/month and reducing MTTR from 2 days to minutes.",
+        "Migrated manual Confluent Kafka provisioning model to automated IAAC based provisioning model with zero downtime using Terraform",
+        "Migrated 10+ Kafka clusters across AWS DC with zero downtime, which resulted in improvement of 50ms per request"
+      ]
+    },
+    {
+      "company": "Direct I - Zeta Team",
+      "role": "Sr. Site Reliability Engineer",
+      "period": "Jun 2023 – Dec 2024",
+      "location": "Bengaluru, IN",
+      "bullets": [
+        "Maintained PCI DSS compliant infrastructure — network segmentation, encrypted data flows, quarterly access reviews, and automated audit trail retention via CloudTrail",
+        "Led the design and development of payment pipelines and enterprise-level automation related to microservice applications saving cost of 1FTE per month using the latest technologies of Python, Jenkins, Helm.",
+        "Engineered rate-limiting and traffic shaping for payment APIs during IPL 2024 peak load (3x normal traffic) — zero transaction drops, maintained SLA under surge",
+        "Designed and implemented alerting schema reducing unwanted alerts by 80% using Helm, Prometheus, Grafana and EKS.",
+        "Operated 99.99% availability infrastructure for payment-critical services across multi-AZ EKS 10+ AWS accounts — automated failover, canary deployments, zero-downtime patching"
+      ]
+    },
+    {
+      "company": "Direct I - Titan Email Team",
+      "role": "DevOps Engineer II",
+      "period": "Sep 2022 – May 2023",
+      "location": "Bengaluru, IN",
+      "bullets": [
+        "Deployed OpenDKIM implementation as a go-service to mitigate excessive RAM consumption using Golang, Linux and AWS Lambda",
+        "Built zero-touch credential rotation system Python + SecretManager meeting SOC2 rotation requirements, removing human access to production secrets entirely",
+        "Developed serverless implementation to draw mail delivery insights using AWS Lambdas"
+      ]
+    },
+    {
+      "company": "Newfold Digital",
+      "role": "Operations Engineer",
+      "period": "Jun.  2021 – Aug 2022",
+      "location": "Bengaluru, IN",
+      "bullets": [
+        "Migrated 7000+ on-prem servers to use SaaS for email delivery and security using enterprise software",
+        "Implemented VPS on-prem server migrations and additions as a part of Growth projects"
+      ]
+    },
+    {
+      "company": "Newfold Digital",
+      "role": "Operations Engineer, Intern",
+      "period": "Feb.  2021 – May 2021",
+      "location": "Bengaluru, IN",
+      "bullets": [
+        "Built an Openshift operator to manifest a highly available private rpm mirror using Golang",
+        "Improved scalability of mirror web app to improvise the package management, deployed in production with an integrated WebUI"
+      ]
+    }
+  ],
+  "skills": {
+    "languages": [
+      "Python",
+      "Golang",
+      "Bash",
+      "SQL (Postgres)"
+    ],
+    "tech": [
+      "AWS(VPC",
+      "EKS",
+      "EC2",
+      "Lambda",
+      "S3",
+      "CloudWatch",
+      "RDS",
+      "IAM",
+      "Secret Manager",
+      "WAF",
+      "SQS",
+      "CloudFront)",
+      "Linux",
+      "Kafka",
+      "Terraform",
+      "Kafka",
+      "Helm",
+      "ArgoCD",
+      "Prometheus",
+      "Grafana",
+      "Jenkins",
+      "Flask",
+      "Istio"
+    ],
+    "tools": [
+      "ClaudeCode",
+      "Git",
+      "Docker",
+      "Cursor"
+    ]
+  },
+  "skillGroups": [
+    {
+      "category": "Cloud & Infrastructure",
+      "skills": [
+        "AWS",
+        "Terraform",
+        "Helm",
+        "Istio",
+        "Docker",
+        "Linux",
+        "ArgoCD"
+      ]
+    },
+    {
+      "category": "CI/CD & Automation",
+      "skills": [
+        "Jenkins",
+        "ArgoCD",
+        "Git",
+        "Docker"
+      ]
+    },
+    {
+      "category": "Observability",
+      "skills": [
+        "Prometheus",
+        "Grafana",
+        "CloudWatch"
+      ]
+    },
+    {
+      "category": "Languages",
+      "skills": [
+        "Python",
+        "Golang",
+        "Bash",
+        "SQL (Postgres)"
+      ]
+    },
+    {
+      "category": "Data & Messaging",
+      "skills": [
+        "Kafka",
+        "SQS",
+        "PostgreSQL"
+      ]
+    },
+    {
+      "category": "Developer Tools",
+      "skills": [
+        "ClaudeCode",
+        "Git",
+        "Docker",
+        "Cursor"
+      ]
+    }
+  ],
+  "meta": {
+    "currentRole": "Devops Engineer III",
+    "currentCompany": "Swiggy",
+    "yearsExperience": 5,
+    "companiesCount": 3
+  },
+  "pdfFilename": "Nishit_resume_2026.pdf"
+}

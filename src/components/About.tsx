@@ -2,17 +2,18 @@
 
 import { motion } from 'framer-motion'
 import { Building2, Shield, Cloud, Bot } from 'lucide-react'
+import resumeData from '@/data/resume.json'
 
 const highlights = [
   {
     icon: Building2,
-    title: 'DevOps Engineer III',
-    subtitle: 'Swiggy',
+    title: resumeData.meta.currentRole,
+    subtitle: resumeData.meta.currentCompany,
   },
   {
     icon: Shield,
-    title: 'Sr. SRE',
-    subtitle: 'Direct I — Zeta Team',
+    title: resumeData.experiences[1]?.role || 'Sr. SRE',
+    subtitle: resumeData.experiences[1]?.company || '',
   },
   {
     icon: Cloud,
@@ -47,12 +48,12 @@ export default function About() {
             <span className="text-accent">Not Just Uptime</span>
           </h2>
           <p className="text-muted text-lg leading-relaxed mb-6">
-            I&apos;ve spent 5 years making sure production doesn&apos;t ruin anyone&apos;s weekend.
+            I&apos;ve spent {resumeData.meta.yearsExperience}+ years making sure production doesn&apos;t ruin anyone&apos;s weekend.
             From migrating 7,000+ on-prem servers to automating Kafka provisioning with
             zero downtime — I build the boring infrastructure that makes exciting products possible.
           </p>
           <p className="text-muted text-lg leading-relaxed">
-            At Swiggy, I build AI-powered enforcement tools, automate Confluent Kafka at scale,
+            At {resumeData.meta.currentCompany}, I build AI-powered debugging tools, automate Confluent Kafka at scale,
             and optimize cross-region traffic. Before that, I designed alerting schemas that cut
             noise by 80% and wrote RCAs under IPL-scale pressure.
           </p>

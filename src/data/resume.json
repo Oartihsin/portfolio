@@ -167,6 +167,32 @@
       ]
     }
   ],
+  "impactStats": [
+    {
+      "value": "100+",
+      "label": "DevOps tickets Eliminated/mo"
+    },
+    {
+      "value": "0",
+      "label": "Downtime Migrations"
+    },
+    {
+      "value": "50ms",
+      "label": "Latency Improved"
+    },
+    {
+      "value": "3x",
+      "label": "Peak Traffic Handled"
+    },
+    {
+      "value": "80%",
+      "label": "unwanted alerts Reduction"
+    },
+    {
+      "value": "99.99%",
+      "label": "Availability SLA"
+    }
+  ],
   "meta": {
     "currentRole": "Devops Engineer III",
     "currentCompany": "Swiggy",

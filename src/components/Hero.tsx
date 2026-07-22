@@ -4,12 +4,7 @@ import { motion } from 'framer-motion'
 import { MapPin, ArrowDown, Download } from 'lucide-react'
 import resumeData from '@/data/resume.json'
 
-const stats = [
-  { value: `${resumeData.meta.yearsExperience}+`, label: 'Years Experience' },
-  { value: `${resumeData.meta.companiesCount}`, label: 'Companies Scaled' },
-  { value: '80%', label: 'Alert Reduction' },
-  { value: '0', label: 'Downtime Migrations' },
-]
+const stats = resumeData.impactStats
 
 export default function Hero() {
   return (
@@ -76,7 +71,7 @@ export default function Hero() {
         transition={{ duration: 0.6, delay: 0.3 }}
         className="w-full max-w-4xl mx-auto"
       >
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 bg-white rounded-2xl border border-border p-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 bg-white rounded-2xl border border-border p-8">
           {stats.map((stat) => (
             <div key={stat.label} className="text-center">
               <div className="font-heading text-3xl font-bold text-accent">

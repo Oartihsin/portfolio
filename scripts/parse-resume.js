@@ -143,6 +143,70 @@ function buildSkillGroups(skills) {
   ];
 }
 
+function extractImpactStats(experiences) {
+  const stats = [];
+  const allBullets = experiences.flatMap(e => e.bullets);
+
+  for (const bullet of allBullets) {
+    // Pattern: "reducing X by N%" or "reduced X by N%"
+    const reductionMatch = bullet.match(/reduc\w+\s+(.+?)\s+by\s+(\d+%)/i);
+    if (reductionMatch) {
+      stats.push({ value: reductionMatch[2], label: `${reductionMatch[1]} Reduction` });
+      continue;
+    }
+
+    // Pattern: "N+ servers/clusters/tickets"
+    const scaleMatch = bullet.match(/(\d[\d,]*\+?)\s+(servers|clusters|tickets|on-prem|accounts)/i);
+    if (scaleMatch) {
+      stats.push({ value: scaleMatch[1], label: `${scaleMatch[2].charAt(0).toUpperCase() + scaleMatch[2].slice(1)} Managed` });
+      continue;
+    }
+
+    // Pattern: "99.X% availability"
+    const availMatch = bullet.match(/(99\.\d+%)\s*availability/i);
+    if (availMatch) {
+      stats.push({ value: availMatch[1], label: 'Availability SLA' });
+      continue;
+    }
+
+    // Pattern: "Nx normal traffic" or "Nx improvement"
+    const multiplierMatch = bullet.match(/(\dx)\s+(normal\s+)?traffic/i);
+    if (multiplierMatch) {
+      stats.push({ value: multiplierMatch[1], label: 'Peak Traffic Handled' });
+      continue;
+    }
+
+    // Pattern: "zero downtime"
+    if (bullet.match(/zero\s+downtime/i) && !stats.some(s => s.label.includes('Downtime'))) {
+      stats.push({ value: '0', label: 'Downtime Migrations' });
+      continue;
+    }
+
+    // Pattern: "eliminating N tickets/month" or "saving cost of N"
+    const elimMatch = bullet.match(/eliminat\w+\s+(\d+[\d,]*\+?)\s+(.+?)(?:\/|per)/i);
+    if (elimMatch) {
+      stats.push({ value: elimMatch[1] + '+', label: `${elimMatch[2].trim()} Eliminated/mo` });
+      continue;
+    }
+
+    // Pattern: "improvement of Nms"
+    const latencyMatch = bullet.match(/improvement\s+of\s+(\d+ms)/i);
+    if (latencyMatch) {
+      stats.push({ value: latencyMatch[1], label: 'Latency Improved' });
+      continue;
+    }
+  }
+
+  // Deduplicate by label similarity and cap at 6
+  const seen = new Set();
+  return stats.filter(s => {
+    const key = s.label.toLowerCase().replace(/[^a-z]/g, '');
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  }).slice(0, 6);
+}
+
 async function main() {
   const pdfPath = await findResumePdf();
   const buf = fs.readFileSync(pdfPath);
@@ -170,6 +234,7 @@ async function main() {
   const experiences = parseExperience(sections['Experience'] || '');
   const skills = parseSkills(sections['Technical Skills'] || '');
   const skillGroups = buildSkillGroups(skills);
+  const impactStats = extractImpactStats(experiences);
 
   const currentRole = experiences[0] || {};
   const yearsExp = new Date().getFullYear() - 2021;
@@ -180,6 +245,7 @@ async function main() {
     experiences,
     skills,
     skillGroups,
+    impactStats,
     meta: {
       currentRole: currentRole.role || '',
       currentCompany: currentRole.company || '',
@@ -196,6 +262,8 @@ async function main() {
   console.log(`  Role: ${currentRole.role} @ ${currentRole.company}`);
   console.log(`  Experience entries: ${experiences.length}`);
   console.log(`  Skill groups: ${skillGroups.length}`);
+  console.log(`  Impact stats: ${impactStats.length}`);
+  impactStats.forEach(s => console.log(`    ${s.value} — ${s.label}`));
 }
 
 main().catch(e => { console.error(e); process.exit(1); });

@@ -173,8 +173,8 @@
       "label": "DevOps tickets Eliminated/mo"
     },
     {
-      "value": "0",
-      "label": "Downtime Migrations"
+      "value": "2",
+      "label": "Zero-Downtime Migrations"
     },
     {
       "value": "50ms",

@@ -176,9 +176,10 @@ function extractImpactStats(experiences) {
       continue;
     }
 
-    // Pattern: "zero downtime"
+    // Pattern: "zero downtime" — count occurrences across all bullets
     if (bullet.match(/zero\s+downtime/i) && !stats.some(s => s.label.includes('Downtime'))) {
-      stats.push({ value: '0', label: 'Downtime Migrations' });
+      const count = allBullets.filter(b => b.match(/zero\s+downtime/i)).length;
+      stats.push({ value: `${count}`, label: 'Zero-Downtime Migrations' });
       continue;
     }
 

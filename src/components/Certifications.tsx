@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Award, ExternalLink } from 'lucide-react'
+import { ExternalLink } from 'lucide-react'
 
 const certifications = [
   {
@@ -12,6 +12,7 @@ const certifications = [
     date: 'September 2019',
     certId: '190-124-339',
     pdf: '/portfolio/certs/rhce.pdf',
+    image: '/portfolio/certs/rhce.png',
   },
   {
     title: 'Red Hat Certified System Administrator',
@@ -21,6 +22,7 @@ const certifications = [
     date: 'May 2019',
     certId: '190-124-339',
     pdf: '/portfolio/certs/rhcsa.pdf',
+    image: '/portfolio/certs/rhcsa.png',
   },
   {
     title: 'Red Hat Certified Specialist in Ansible Automation',
@@ -30,6 +32,7 @@ const certifications = [
     date: 'June 2019',
     certId: '190-124-339',
     pdf: '/portfolio/certs/ansible-specialist.pdf',
+    image: '/portfolio/certs/ansible-specialist.png',
   },
 ]
 
@@ -66,24 +69,32 @@ export default function Certifications() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="group bg-surface rounded-2xl border border-border p-8 hover:shadow-lg hover:border-accent/30 transition-all"
+              className="group bg-surface rounded-2xl border border-border overflow-hidden hover:shadow-lg hover:border-accent/30 transition-all"
             >
-              <div className="flex items-start justify-between mb-4">
-                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
-                  <Award size={24} className="text-accent" />
+              {/* Certificate preview image */}
+              <div className="relative overflow-hidden">
+                <img
+                  src={cert.image}
+                  alt={cert.title}
+                  className="w-full h-48 object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-3">
+                  <span className="text-xs font-medium text-accent flex items-center gap-1">
+                    View Certificate <ExternalLink size={12} />
+                  </span>
                 </div>
-                <ExternalLink size={16} className="text-muted opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
 
-              <h3 className="font-heading text-lg font-bold text-gray-900 mb-1">
-                {cert.abbrev}
-              </h3>
-              <p className="text-sm text-muted mb-3">{cert.title}</p>
+              <div className="p-6">
+                <h3 className="font-heading text-lg font-bold text-gray-900 mb-1">
+                  {cert.abbrev}
+                </h3>
+                <p className="text-sm text-muted mb-3">{cert.title}</p>
 
-              <div className="space-y-1 text-xs text-muted">
-                <p><span className="font-medium text-gray-700">Tech:</span> {cert.tech}</p>
-                <p><span className="font-medium text-gray-700">Issued:</span> {cert.date}</p>
-                <p><span className="font-medium text-gray-700">ID:</span> {cert.certId}</p>
+                <div className="space-y-1 text-xs text-muted">
+                  <p><span className="font-medium text-gray-700">Tech:</span> {cert.tech}</p>
+                  <p><span className="font-medium text-gray-700">Issued:</span> {cert.date}</p>
+                </div>
               </div>
             </motion.a>
           ))}

@@ -193,6 +193,88 @@
       "label": "Availability SLA"
     }
   ],
+  "caseStudies": [
+    {
+      "title": "AI-powered K8s debugging MCP server",
+      "company": "Swiggy",
+      "color": "from-blue-500 to-cyan-400",
+      "description": "Built an AI-powered K8s debugging MCP server enabling self-serve ephemeral environment troubleshooting via Claude Code, eliminating  100 DevOps tickets/month and reducing MTTR from 2 days to minutes.",
+      "metrics": [
+        {
+          "value": "minutes",
+          "label": "MTTR"
+        }
+      ]
+    },
+    {
+      "title": "Manual Confluent Kafka provisioning model",
+      "company": "Swiggy",
+      "color": "from-violet-500 to-purple-400",
+      "description": "Migrated manual Confluent Kafka provisioning model to automated IAAC based provisioning model with zero downtime using Terraform",
+      "metrics": [
+        {
+          "value": "0",
+          "label": "Downtime"
+        }
+      ]
+    },
+    {
+      "title": "10+ Kafka clusters across AWS DC",
+      "company": "Swiggy",
+      "color": "from-emerald-500 to-teal-400",
+      "description": "Migrated 10+ Kafka clusters across AWS DC with zero downtime, which resulted in improvement of 50ms per request",
+      "metrics": [
+        {
+          "value": "10+",
+          "label": "Kafka"
+        },
+        {
+          "value": "0",
+          "label": "Downtime"
+        },
+        {
+          "value": "50ms",
+          "label": "Latency Saved"
+        }
+      ]
+    },
+    {
+      "title": "Rate-limiting and traffic shaping",
+      "company": "Direct I - Zeta Team",
+      "color": "from-orange-500 to-amber-400",
+      "description": "Engineered rate-limiting and traffic shaping for payment APIs during IPL 2024 peak load (3x normal traffic) — zero transaction drops, maintained SLA under surge",
+      "metrics": [
+        {
+          "value": "3x",
+          "label": "Scale"
+        }
+      ]
+    },
+    {
+      "title": "Implemented alerting schema",
+      "company": "Direct I - Zeta Team",
+      "color": "from-rose-500 to-pink-400",
+      "description": "Designed and implemented alerting schema reducing unwanted alerts by 80% using Helm, Prometheus, Grafana and EKS.",
+      "metrics": [
+        {
+          "value": "80%",
+          "label": "Improvement"
+        }
+      ]
+    },
+    {
+      "title": "99.99% availability infrastructure",
+      "company": "Direct I - Zeta Team",
+      "color": "from-indigo-500 to-blue-400",
+      "description": "Operated 99.99% availability infrastructure for payment-critical services across multi-AZ EKS 10+ AWS accounts — automated failover, canary deployments, zero-downtime patching",
+      "metrics": [
+        {
+          "value": "99.99%",
+          "label": "Availability"
+        }
+      ]
+    }
+  ],
   "meta": {
     "currentRole": "Devops Engineer III",
     "currentCompany": "Swiggy",

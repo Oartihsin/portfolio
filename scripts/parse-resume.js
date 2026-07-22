@@ -143,6 +143,79 @@ function buildSkillGroups(skills) {
   ];
 }
 
+function extractCaseStudies(experiences) {
+  const colors = [
+    'from-blue-500 to-cyan-400',
+    'from-violet-500 to-purple-400',
+    'from-emerald-500 to-teal-400',
+    'from-orange-500 to-amber-400',
+    'from-rose-500 to-pink-400',
+    'from-indigo-500 to-blue-400',
+  ];
+
+  const studies = [];
+  for (const exp of experiences) {
+    for (const bullet of exp.bullets) {
+      // Only pick bullets with measurable impact
+      const hasMetric = bullet.match(/(\d+[\d,]*[%+x]?|\d+\.\d+%|zero\s+downtime|self-serve|MTTR)/i);
+      if (!hasMetric) continue;
+
+      // Extract a concise title from the bullet
+      let title = '';
+      const actionMatch = bullet.match(/^(Built|Migrated|Designed|Engineered|Operated|Deployed|Led|Maintained|Developed|Implemented)\s+(.+?)(?:\s+(?:using|enabling|saving|reducing|eliminating|with|to|for|via|—|,\s))/i);
+      if (actionMatch) {
+        title = actionMatch[2].trim();
+        title = title.replace(/^(an?|the|and)\s+/i, '');
+        title = title.charAt(0).toUpperCase() + title.slice(1);
+        if (title.length > 50) title = title.substring(0, 47) + '...';
+      } else {
+        title = bullet.split(/\s+/).slice(0, 6).join(' ');
+      }
+
+      // Extract metrics from the bullet
+      const metrics = [];
+      const percentMatch = bullet.match(/(\d{1,2}%)/);
+      if (percentMatch && !bullet.match(/99\.\d+%/)) metrics.push({ value: percentMatch[1], label: 'Improvement' });
+
+      const countMatch = bullet.match(/(\d[\d,]*\+?)\s+(tickets|servers|clusters|accounts|Kafka)/i);
+      if (countMatch) metrics.push({ value: countMatch[1], label: countMatch[2] });
+
+      if (bullet.match(/zero\s+downtime/i)) metrics.push({ value: '0', label: 'Downtime' });
+
+      const mttrMatch = bullet.match(/MTTR\s+(?:from\s+)?(\d+\s*\w+)\s+to\s+(\w+)/i);
+      if (mttrMatch) metrics.push({ value: mttrMatch[2], label: 'MTTR' });
+
+      const latencyMatch = bullet.match(/(\d+ms)/i);
+      if (latencyMatch) metrics.push({ value: latencyMatch[1], label: 'Latency Saved' });
+
+      const multiplierMatch = bullet.match(/(\dx)\s/i);
+      if (multiplierMatch) metrics.push({ value: multiplierMatch[1], label: 'Scale' });
+
+      if (bullet.match(/99\.\d+%/)) metrics.push({ value: bullet.match(/99\.\d+%/)[0], label: 'Availability' });
+
+      // Dedupe metrics
+      const seenLabels = new Set();
+      const dedupedMetrics = metrics.filter(m => {
+        if (seenLabels.has(m.label)) return false;
+        seenLabels.add(m.label);
+        return true;
+      }).slice(0, 3);
+
+      if (dedupedMetrics.length === 0) continue;
+
+      studies.push({
+        title,
+        company: exp.company,
+        color: colors[studies.length % colors.length],
+        description: bullet,
+        metrics: dedupedMetrics,
+      });
+    }
+  }
+
+  return studies;
+}
+
 function extractImpactStats(experiences) {
   const stats = [];
   const allBullets = experiences.flatMap(e => e.bullets);
@@ -236,6 +309,7 @@ async function main() {
   const skills = parseSkills(sections['Technical Skills'] || '');
   const skillGroups = buildSkillGroups(skills);
   const impactStats = extractImpactStats(experiences);
+  const caseStudies = extractCaseStudies(experiences);
 
   const currentRole = experiences[0] || {};
   const yearsExp = new Date().getFullYear() - 2021;
@@ -247,6 +321,7 @@ async function main() {
     skills,
     skillGroups,
     impactStats,
+    caseStudies,
     meta: {
       currentRole: currentRole.role || '',
       currentCompany: currentRole.company || '',

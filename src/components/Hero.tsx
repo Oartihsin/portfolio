@@ -9,12 +9,12 @@ const stats = resumeData.impactStats
 
 export default function Hero() {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center px-6 pt-20 pb-12">
+    <section className="min-h-screen flex flex-col items-center justify-center pt-20 pb-0">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-center max-w-4xl mx-auto"
+        className="text-center max-w-4xl mx-auto px-6"
       >
         {/* Location badge */}
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-border text-muted text-sm mb-8">
@@ -65,21 +65,21 @@ export default function Hero() {
         </div>
       </motion.div>
 
-      {/* Stats marquee */}
+      {/* Stats marquee — full bleed */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="w-full max-w-5xl mx-auto"
+        className="w-full"
       >
-        <div className="bg-white rounded-2xl border border-border py-6 overflow-hidden">
-          <Marquee speed={50} gradient={false} autoFill={true}>
+        <div className="border-y border-border bg-white py-8">
+          <Marquee speed={60} gradient={false} autoFill={true}>
             {stats.map((stat) => (
-              <div key={stat.label} className="text-center mx-10">
-                <div className="font-heading text-3xl font-bold text-accent">
+              <div key={stat.label} className="flex items-center gap-3 mx-12">
+                <span className="font-heading text-3xl font-bold text-accent">
                   {stat.value}
-                </div>
-                <div className="text-sm text-muted mt-1">{stat.label}</div>
+                </span>
+                <span className="text-sm text-muted">{stat.label}</span>
               </div>
             ))}
           </Marquee>
